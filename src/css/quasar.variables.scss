@@ -1,16 +1,16 @@
 // Quasar SCSS (& Sass) Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
-// the Sass/SCSS variables found in Quasar's source Sass/SCSS files.
+// the Sass/SCSS variables found in Quasars source Sass/SCSS files.
 
 // Check documentation for full list of Quasar variables
 
-// Your own variables (that are declared here) and Quasar's own
+// Your own variables (that are declared here) and Quasars own
 // ones will be available out of the box in your .vue/.scss/.sass files
 
-// It's highly recommended to change the default colors
-// to match your app's branding.
-// Tip: Use the "Theme Builder" on Quasar's documentation website.
+// Its highly recommended to change the default colors
+// to match your apps branding.
+// Tip: Use the "Theme Builder" on Quasars documentation website.
 
 $primary: #1976d2;
 $secondary: #26a69a;
@@ -24,4 +24,127 @@ $negative: #c10015;
 $info: #31ccec;
 $warning: #f2c037;
 
-$typography-font-family: 'Inter', 'system-ui', 'sans-serif';
+$neutral-black: #263238;
+$neutral-d_grey: #4d4d4d;
+$neutral-grey: #717171;
+$neutral-l_grey: #89939e;
+$neutral-grey-blue: #abbed1;
+$neutral-silver: #f5f7fa;
+$neutral-white: #ffffff;
+$shade-100: #43a046;
+$shade-200: #388e3b;
+$shade-300: #237d31;
+$shade-400: #1b5e1f;
+$shade-500: #103e13;
+$tint-100: #66bb69;
+$tint-200: #81c784;
+$tint-300: #a5d6a7;
+$tint-400: #c8e6c9;
+$tint-500: #e8f5e9;
+
+.text-neutral-black {
+  color: $neutral-black !important;
+}
+.bg-neutral-black {
+  background: $neutral-black !important;
+}
+.text-neutral-d_grey {
+  color: $neutral-d_grey !important;
+}
+.bg-neutral-d_grey {
+  background: $neutral-d_grey !important;
+}
+.text-neutral-grey {
+  color: $neutral-grey !important;
+}
+.bg-neutral-grey {
+  background: $neutral-grey !important;
+}
+.text-neutral-l_grey {
+  color: $neutral-l_grey !important;
+}
+.bg-neutral-l_grey {
+  background: $neutral-l_grey !important;
+}
+.text-neutral-grey-blue {
+  color: $neutral-grey-blue !important;
+}
+.bg-neutral-grey-blue {
+  background: $neutral-grey-blue !important;
+}
+.text-neutral-silver {
+  color: $neutral-silver !important;
+}
+.bg-neutral-silver {
+  background: $neutral-silver !important;
+}
+.text-neutral-white {
+  color: $neutral-white !important;
+}
+.bg-neutral-white {
+  background: $neutral-white !important;
+}
+
+.text-shade-100 {
+  color: $shade-100 !important;
+}
+.bg-shade-100 {
+  background: $shade-100 !important;
+}
+.text-shade-200 {
+  color: $shade-200 !important;
+}
+.bg-shade-200 {
+  background: $shade-200 !important;
+}
+.text-shade-300 {
+  color: $shade-300 !important;
+}
+.bg-shade-300 {
+  background: $shade-300 !important;
+}
+.text-shade-400 {
+  color: $shade-400 !important;
+}
+.bg-shade-400 {
+  background: $shade-400 !important;
+}
+.text-shade-500 {
+  color: $shade-500 !important;
+}
+.bg-shade-500 {
+  background: $shade-500 !important;
+}
+
+.text-tint-100 {
+  color: $tint-100 !important;
+}
+.bg-tint-100 {
+  background: $tint-100 !important;
+}
+.text-tint-200 {
+  color: $tint-200 !important;
+}
+.bg-tint-200 {
+  background: $tint-200 !important;
+}
+.text-tint-300 {
+  color: $tint-300 !important;
+}
+.bg-tint-300 {
+  background: $tint-300 !important;
+}
+.text-tint-400 {
+  color: $tint-400 !important;
+}
+.bg-tint-400 {
+  background: $tint-400 !important;
+}
+.text-tint-500 {
+  color: $tint-500 !important;
+}
+.bg-tint-500 {
+  background: $tint-500 !important;
+}
+
+$typography-font-family: Inter, system-ui, sans-serif;
