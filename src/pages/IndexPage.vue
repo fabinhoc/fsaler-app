@@ -17,7 +17,7 @@
           :title="'Produtos'"
           :icon="'qr_code_scanner'"
           :caption="'Total: 20'"
-          :link="'/products'"
+          :link="'list-products'"
         />
       </div>
       <div class="col">

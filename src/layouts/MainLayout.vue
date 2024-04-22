@@ -11,7 +11,10 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
+        <q-toolbar-title
+          class="cursor-pointer"
+          @click="$router.push({ name: 'dashboard' })"
+        >
           {{ $t('app.projectName') }}
         </q-toolbar-title>
 
