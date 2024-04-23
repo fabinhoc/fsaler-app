@@ -4,7 +4,7 @@ import { QTableProps } from 'quasar';
 export default function useApi(url: string) {
   const all = async () => {
     try {
-      const { data } = await api.get(`${url}/get/all`);
+      const { data } = await api.get(`${url}`);
       return data;
     } catch (error: unknown) {
       throw error;
