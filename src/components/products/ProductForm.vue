@@ -160,7 +160,7 @@ import useVuelidate, { ValidationArgs } from '@vuelidate/core';
 import { CategoryType } from 'src/types/Category.type';
 import useCategoryService from 'src/services/category.service';
 import useProductService from 'src/services/product.service';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import useNotify from 'src/composables/UseNotify';
 import { useI18n } from 'vue-i18n';
 import { date } from 'quasar';
@@ -175,11 +175,14 @@ export default defineComponent({
     const categories: Ref<CategoryType[] | null> = ref(null);
     const categoryService = useCategoryService();
     const router = useRouter();
+    const route = useRoute();
     const productForm = ref();
     const service = useProductService();
     const notify = useNotify();
     const { t } = useI18n();
     const dialog: Ref<boolean> = ref(false);
+    const updateData: Ref<boolean> = ref(false);
+    const uuid: Ref<number | string> = ref('');
     const form: Ref<ProductDto> = ref({
       name: null,
       ean: null,
@@ -254,8 +257,14 @@ export default defineComponent({
         form.value.purchase_date = purchaseDate
           ? date.formatDate(purchaseDate, 'yyyy-mm-dd')
           : null;
-        await service.post(form.value);
-        clear();
+        if (!updateData.value) {
+          await service.post(form.value);
+          clear();
+        } else {
+          const id = (route.params.id as string) || uuid.value;
+          await service.put(id, form.value);
+          router.push({ name: 'list-products' });
+        }
         notify.success(t('success'));
       } catch (error: any) {
         console.log(error);
@@ -264,8 +273,16 @@ export default defineComponent({
       }
     };
 
-    const setCode = (code: string) => {
+    const setCode = async (code: string) => {
       form.value.ean = code;
+      const data = await service.findByEan(code);
+      if (data) {
+        form.value = data;
+        form.value.quantity = data.inventory.quantity;
+        form.value.category_id = data.category.id;
+        updateData.value = true;
+        uuid.value = data.uuid;
+      }
     };
 
     return {
