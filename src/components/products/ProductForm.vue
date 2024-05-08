@@ -5,8 +5,10 @@
       color="primary"
       class="q-mb-sm"
       :class="$q.platform.is.mobile ? 'full-width' : ''"
-      >Ler código de barras</q-btn
+      @click="dialog = true"
     >
+      Ler código de barras
+    </q-btn>
     <div class="row column q-col-gutter-md">
       <q-input
         v-model="v$.name.$model"
@@ -132,7 +134,7 @@
     </div>
     <q-btn
       type="submit"
-      color="neutral-black"
+      color="positive"
       :disable="v$.$invalid"
       class="full-width q-ma-sm"
       >{{ $t('app.product.component.productForm.save') }}</q-btn
@@ -146,6 +148,7 @@
       >{{ $t('app.product.component.productForm.cancel') }}</q-btn
     >
   </q-form>
+  <QRCodeDialog v-model="dialog" :init="dialog" @setCode="setCode" />
 </template>
 
 <script lang="ts">
@@ -161,9 +164,13 @@ import { useRouter } from 'vue-router';
 import useNotify from 'src/composables/UseNotify';
 import { useI18n } from 'vue-i18n';
 import { date } from 'quasar';
+import QRCodeDialog from 'src/components/QRCodeDialog.vue';
 
 export default defineComponent({
   name: 'ProductForm',
+  components: {
+    QRCodeDialog,
+  },
   setup() {
     const categories: Ref<CategoryType[] | null> = ref(null);
     const categoryService = useCategoryService();
@@ -172,6 +179,7 @@ export default defineComponent({
     const service = useProductService();
     const notify = useNotify();
     const { t } = useI18n();
+    const dialog: Ref<boolean> = ref(false);
     const form: Ref<ProductDto> = ref({
       name: null,
       ean: null,
@@ -197,7 +205,6 @@ export default defineComponent({
     const getCategories = async () => {
       const { data } = await categoryService.all();
       categories.value = data;
-      console.log(data);
     };
 
     onMounted(() => {
@@ -257,6 +264,10 @@ export default defineComponent({
       }
     };
 
+    const setCode = (code: string) => {
+      form.value.ean = code;
+    };
+
     return {
       form,
       v$,
@@ -265,7 +276,15 @@ export default defineComponent({
       cancel,
       handleSubmit,
       productForm,
+      dialog,
+      setCode,
     };
   },
 });
 </script>
+
+<style type="scss">
+#card {
+  background-color: rgba(38, 50, 56, 0.9);
+}
+</style>
