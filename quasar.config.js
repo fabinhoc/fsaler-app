@@ -56,6 +56,7 @@ module.exports = configure(function (ctx) {
       // analyze: true,
       env: {
         API_URL: ctx.dev ? 'http://localhost/api' : 'http://localhost/api',
+        BUCKET_IMAGE: ctx.dev ? 'http://localhost:9000/fsaler-products/' : '',
       },
       // rawDefine: {}
       // ignorePublicFolder: true,

@@ -58,7 +58,6 @@ export default defineComponent({
       setTimeout(() => {
         const width: number =
           document.getElementById('section')?.offsetWidth ?? 0;
-        console.log(width);
         Quagga.init(
           {
             inputStream: {
