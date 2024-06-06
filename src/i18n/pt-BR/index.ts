@@ -2,8 +2,8 @@
 // so you can safely delete all default props below
 
 export default {
-  failed: 'Action failed',
-  success: 'Action was successful',
+  failed: 'Erro executar ação',
+  success: 'Salvo com sucesso',
   validations: {
     required: 'Este campo é obrigatório',
     string: 'Este campo não pode ser numérico',
@@ -52,6 +52,22 @@ export default {
           purchaseDateHint: 'dd/mm/yyyy',
           quantity: 'Quantidade',
           quantityHint: '',
+          noResults: 'Sem resultados.',
+          save: 'Salvar',
+          cancel: 'Cancelar',
+        },
+      },
+    },
+    client: {
+      component: {
+        clientForm: {
+          name: 'Nome',
+          nameHint: 'Digite o nome do cliente',
+          phoneNumber: 'Celular',
+          phoneNumberHint:
+            'Utilize um número de whatsapp para melhor interação com o app',
+          description: 'Descrição',
+          descriptionHint: '',
           noResults: 'Sem resultados.',
           save: 'Salvar',
           cancel: 'Cancelar',

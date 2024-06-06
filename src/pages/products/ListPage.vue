@@ -1,29 +1,38 @@
 <template>
   <q-page padding>
-    <q-card flat class="row column items-start q-gutter-sm">
-      <q-card-section>
-        <span class="text-h4 text-neutral-black">Lista de Produtos</span>
+    <q-card flat class="column items-center">
+      <q-card-section class="q-pb-none">
+        <span class="text-h5 text-neutral-black">Lista de Produtos</span>
       </q-card-section>
-      <q-card-section class="full-width q-px-lg">
-        <div class="q-gutter-sm">
-          <q-btn
-            color="primary"
-            icon="add"
-            @click="$router.push({ name: 'new-product' })"
-          ></q-btn>
-          <q-btn
-            color="neutral-grey"
-            icon="qr_code_scanner"
-            @click="$router.push({ name: 'new-product' })"
-          ></q-btn>
-          <q-input outlined v-model="search" label="Buscar..." dense>
-            <template v-slot:append>
-              <q-icon name="search" />
-            </template>
-          </q-input>
+      <q-card-section>
+        <div class="column items-center q-gutter-sm">
+          <div class="row q-gutter-sm">
+            <q-btn
+              color="primary"
+              outline
+              icon="las la-plus-circle"
+              @click="$router.push({ name: 'new-product' })"
+              no-caps
+            ></q-btn>
+            <q-btn
+              color="neutral-grey"
+              icon="las la-barcode"
+              @click="$router.push({ name: 'new-product' })"
+            ></q-btn>
+          </div>
         </div>
       </q-card-section>
       <q-card-section class="full-width">
+        <q-separator></q-separator>
+      </q-card-section>
+      <q-card-section class="full-width q-mb-none">
+        <q-input outlined v-model="search" label="Buscar...">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </q-card-section>
+      <q-card-section class="full-width q-pt-none">
         <div class="row q-col-gutter-sm">
           <q-infinite-scroll
             @load="getProducts"

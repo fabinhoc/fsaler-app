@@ -58,5 +58,20 @@ export default {
         },
       },
     },
+    client: {
+      component: {
+        clientForm: {
+          name: 'Name',
+          nameHint: 'Type client name',
+          phoneNumber: 'Phone number',
+          phoneNumberHint: 'For better interaction type whatsapp number',
+          description: 'Description',
+          descriptionHint: '',
+          noResults: 'No Results',
+          save: 'Save',
+          cancel: 'Cancel',
+        },
+      },
+    },
   },
 };

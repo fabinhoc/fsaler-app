@@ -1,8 +1,10 @@
 <template>
   <q-card tag="article" @click="goTo(link)" class="cursor-pointer touch">
     <q-card-section class="flex column items-center justify-center">
-      <q-icon :name="icon" color="primary" size="60px"></q-icon>
-      <span class="text-h5 text-neutral-grey">{{ title }}</span>
+      <q-icon :name="icon" color="positive" size="48px"></q-icon>
+      <span class="text-subtitle1 text-weight-bold text-neutral-grey">{{
+        title
+      }}</span>
       <span class="text-neutral-grey text-body-3">{{ caption }}</span>
     </q-card-section>
   </q-card>

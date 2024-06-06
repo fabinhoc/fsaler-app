@@ -33,12 +33,28 @@ const routes: RouteRecordRaw[] = [
       {
         path: '',
         name: 'list-products',
-        component: () => import('pages/products/listPage.vue'),
+        component: () => import('src/pages/products/ListPage.vue'),
       },
       {
         path: 'new',
         name: 'new-product',
-        component: () => import('pages/products/newPage.vue'),
+        component: () => import('src/pages/products/NewPage.vue'),
+      },
+    ],
+  },
+  {
+    path: '/clients',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'list-clients',
+        component: () => import('pages/clients/ListPage.vue'),
+      },
+      {
+        path: 'new',
+        name: 'new-client',
+        component: () => import('pages/clients/NewPage.vue'),
       },
     ],
   },

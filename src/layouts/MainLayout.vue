@@ -1,25 +1,33 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
+    <q-header elevated class="bg-white q-pa-sm">
+      <q-toolbar class="row justify-between">
         <q-btn
           flat
           dense
           round
-          icon="menu"
+          icon="las la-bars"
           aria-label="Menu"
           @click="toggleLeftDrawer"
+          color="neutral-grey"
         />
 
         <q-toolbar-title
           class="cursor-pointer"
           @click="$router.push({ name: 'dashboard' })"
         >
-          {{ $t('app.projectName') }}
+          <q-img src="src/assets/logo-fsaler.png" alt="logo" width="36px" />
         </q-toolbar-title>
 
-        <q-btn icon="person" round flat></q-btn>
-        <q-btn icon="logout" round flat></q-btn>
+        <div>
+          <q-btn color="neutral-grey" icon="las la-user" round flat></q-btn>
+          <q-btn
+            color="neutral-grey"
+            icon="las la-sign-out-alt"
+            round
+            flat
+          ></q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -57,19 +65,19 @@ const linksList: EssentialLinkProps[] = [
   {
     title: 'Clientes',
     caption: '',
-    icon: 'group',
+    icon: 'las la-users',
     link: '/clients',
   },
   {
     title: 'Produtos',
     caption: '',
-    icon: 'qr_code_scanner',
+    icon: 'las la-barcode',
     link: '/products',
   },
   {
     title: 'Vendas',
     caption: '',
-    icon: 'attach_money',
+    icon: 'las la-dollar-sign',
     link: '/orders',
   },
 ];

@@ -1,13 +1,13 @@
 <template>
   <q-page padding>
     <div
-      class="row justify-evenly q-gutter-md"
-      :class="$q.platform.is.mobile ? 'column' : ''"
+      class="justify-evenly q-gutter-md"
+      :class="$q.screen.lt.sm ? 'column' : 'row'"
     >
       <div class="col">
         <InfoCard
           :title="'Clientes'"
-          :icon="'group'"
+          :icon="'las la-users'"
           :caption="'Total: 20'"
           :link="'/clients'"
         />
@@ -15,7 +15,7 @@
       <div class="col">
         <InfoCard
           :title="'Produtos'"
-          :icon="'qr_code_scanner'"
+          :icon="'las la-barcode'"
           :caption="'Total: 20'"
           :link="'list-products'"
         />
@@ -23,7 +23,7 @@
       <div class="col">
         <InfoCard
           :title="'Vendas'"
-          :icon="'attach_money'"
+          :icon="'las la-dollar-sign'"
           :caption="'Total: 20'"
           :link="'/orders'"
         />
