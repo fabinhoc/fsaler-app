@@ -2,7 +2,7 @@
   <q-card id="product-card" class="q-my-sm my-card">
     <q-img :src="image" :alt="sanitizeText(product.name)" />
     <q-card-section>
-      <div class="text-overline text-negative">{{ product.category.name }}</div>
+      <div class="text-overline text-orange-9">{{ product.category.name }}</div>
       <div class="text-h5 q-mt-sm q-mb-sm">{{ product.name }}</div>
       <span class="text-overline text-shade-100"
         >{{ product.inventory.quantity }} em estoque</span

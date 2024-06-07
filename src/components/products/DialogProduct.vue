@@ -17,7 +17,7 @@
           </q-bar>
         </div>
       </q-card-section>
-      <q-img :src="image" alt="product-image" />
+      <q-img :src="image" :alt="sanitizeText(product.name)" />
       <q-card-section>
         <div class="text-overline text-orange-9">
           {{ product.category.name }}
@@ -76,11 +76,22 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const image: ComputedRef = computed(
-      () => `${process.env.BUCKET_IMAGE}/${props.product.image}`
+    const image: ComputedRef<string> = computed(() =>
+      props.product.image
+        ? `${process.env.BUCKET_IMAGE}/${props.product.image}`
+        : '/src/assets/no-image.webp'
     );
+
+    const sanitizeText = (value: string) => {
+      value = value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      value = value.replace(/\s+/g, '-');
+      value = value.toLowerCase();
+
+      return value;
+    };
     return {
       image,
+      sanitizeText,
     };
   },
 });
