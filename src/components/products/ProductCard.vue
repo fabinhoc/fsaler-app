@@ -2,28 +2,30 @@
   <q-card id="product-card" class="q-my-sm my-card">
     <q-img :src="image" :alt="sanitizeText(product.name)" />
     <q-card-section>
-      <div class="text-overline text-orange-9">{{ product.category.name }}</div>
-      <div class="text-h5 q-mt-sm q-mb-xs">{{ product.name }}</div>
+      <div class="text-overline text-negative">{{ product.category.name }}</div>
+      <div class="text-h5 q-mt-sm q-mb-sm">{{ product.name }}</div>
       <span class="text-overline text-shade-100"
         >{{ product.inventory.quantity }} em estoque</span
       >
-      <div class="text-caption text-grey">
-        {{ product.description }}
-      </div>
-      <div class="text-subtitle2 text-positive">
+      <div class="text-subtitle2 text-positive" style="margin-top: -8px">
         {{ $n(parseFloat(product.price), 'currency') }}
       </div>
+      <div class="text-caption text-grey q-mt-md">
+        {{ product.description }}
+      </div>
     </q-card-section>
-
-    <q-card-actions>
-      <q-btn color="info" icon="edit"></q-btn>
-      <q-btn color="negative" icon="delete"></q-btn>
+    <q-card-section>
       <q-btn
         color="accent"
-        icon="add"
+        size="md"
+        outline
+        no-caps
+        icon="las la-plus"
         @click="$emit('selectedProduct', product)"
-      ></q-btn>
-    </q-card-actions>
+        class="full-width"
+        >Detalhes
+      </q-btn>
+    </q-card-section>
   </q-card>
 </template>
 

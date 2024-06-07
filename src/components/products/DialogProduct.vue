@@ -4,7 +4,7 @@
     transition-show="slide-up"
     transition-hide="slide-down"
     class="q-pa-none"
-    :maximized="$q.platform.is.mobile"
+    :maximized="$q.screen.lt.sm"
   >
     <q-card>
       <q-card-section class="q-pa-none bg-white q-ma-none full-width">
@@ -17,24 +17,30 @@
           </q-bar>
         </div>
       </q-card-section>
-      <img :src="image" alt="product-image" />
+      <q-img :src="image" alt="product-image" />
       <q-card-section>
         <div class="text-overline text-orange-9">
           {{ product.category.name }}
         </div>
         <div class="text-h5 q-mt-sm">
           {{ product.name }}
+        </div>
+        <div>
           <span class="text-caption q-mt-sm q-mb-xs text-neutral-grey">
-            | {{ product.ean }}</span
+            {{ product.ean }}
+          </span>
+        </div>
+        <div class="q-mt-sm">
+          <span
+            class="text-overline"
+            :class="
+              product.inventory.quantity > 0 ? 'text-shade-100' : 'warning'
+            "
+            >{{ product.inventory.quantity }} em estoque</span
           >
         </div>
-        <span
-          class="text-overline"
-          :class="product.inventory.quantity > 0 ? 'text-shade-100' : 'warning'"
-          >{{ product.inventory.quantity }} em estoque</span
-        >
 
-        <div class="text-caption">
+        <div class="text-caption q-mt-sm">
           Preço de custo:
           {{ $n(parseFloat(product.cost_price), 'currency') }}
         </div>
@@ -44,14 +50,14 @@
         <div class="text-caption">
           Data da compra: {{ $d(new Date(product.purchase_date)) }}
         </div>
-        <div class="text-caption text-grey q-my-sm">
+        <div class="text-caption text-grey q-mt-sm">
           {{ product.description }}
         </div>
       </q-card-section>
-      <q-card-actions>
-        <q-btn color="info" icon="edit"></q-btn>
-        <q-btn color="negative" icon="delete"></q-btn>
-      </q-card-actions>
+      <q-card-section class="row q-gutter-sm justify-start">
+        <q-btn color="info" outline no-caps icon="las la-pencil-alt"></q-btn>
+        <q-btn color="negative" icon="lar la-trash-alt" outline no-caps></q-btn>
+      </q-card-section>
     </q-card>
   </q-dialog>
 </template>
