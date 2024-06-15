@@ -186,10 +186,10 @@ export default defineComponent({
   props: {
     productId: {
       required: false,
-      type: Number,
+      type: String,
     },
   },
-  setup() {
+  setup(props) {
     const categories: Ref<CategoryType[] | null> = ref(null);
     const categoryService = useCategoryService();
     const router = useRouter();
@@ -230,6 +230,7 @@ export default defineComponent({
 
     onMounted(() => {
       getCategories();
+      if (props.productId) setData();
     });
 
     const filterFn = (val: string, update: any) => {
@@ -300,6 +301,29 @@ export default defineComponent({
         form.value.category_id = data.category.id;
         updateData.value = true;
         uuid.value = data.uuid;
+      }
+    };
+
+    const setData = async () => {
+      try {
+        if (!props.productId) return;
+        const id: string = props.productId;
+        const { data } = await service.findById(id);
+        updateData.value = true;
+        form.value = {
+          name: data.name,
+          ean: data.ean,
+          category_id: data.category.id,
+          price: data.price,
+          cost_price: data.cost_price,
+          description: data.description,
+          purchase_date: data.purchase_date,
+          quantity: data.inventory.quantity,
+        };
+      } catch (error: any) {
+        console.log(error);
+        const message = error?.response?.data?.message ?? error;
+        notify.error(message);
       }
     };
 

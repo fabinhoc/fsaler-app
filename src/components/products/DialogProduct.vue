@@ -55,7 +55,15 @@
         </div>
       </q-card-section>
       <q-card-section class="row q-gutter-sm justify-start">
-        <q-btn color="info" outline no-caps icon="las la-pencil-alt"></q-btn>
+        <q-btn
+          @click="
+            $router.push({ name: 'edit-product', params: { id: product.uuid } })
+          "
+          color="info"
+          outline
+          no-caps
+          icon="las la-pencil-alt"
+        ></q-btn>
         <q-btn color="negative" icon="lar la-trash-alt" outline no-caps></q-btn>
       </q-card-section>
     </q-card>

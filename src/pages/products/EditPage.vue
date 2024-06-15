@@ -5,7 +5,7 @@
         <PageTitle :title="'Editar Produto'" />
       </q-card-section>
       <q-card-section>
-        <ProductForm />
+        <ProductForm :product-id="id" />
       </q-card-section>
     </q-card>
   </q-page>
@@ -14,6 +14,7 @@
 <script lang="ts">
 import PageTitle from 'src/components/PageTitle.vue';
 import ProductForm from 'src/components/products/ProductForm.vue';
+import { useRoute } from 'vue-router';
 
 export default {
   name: 'EditPage',
@@ -22,7 +23,12 @@ export default {
     PageTitle,
   },
   setup() {
-    return {};
+    const route = useRoute();
+    const id: string = route.params.id as string;
+    console.log(route.params.id);
+    return {
+      id,
+    };
   },
 };
 </script>
