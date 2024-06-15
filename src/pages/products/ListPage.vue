@@ -2,7 +2,7 @@
   <q-page padding>
     <q-card flat class="column items-center">
       <q-card-section class="q-pb-none">
-        <span class="text-h5 text-neutral-black">Lista de Produtos</span>
+        <PageTitle :title="'Lista de Produtos'" />
       </q-card-section>
       <q-card-section>
         <div class="column items-center q-gutter-sm">
@@ -72,12 +72,14 @@ import useProductService from 'src/services/product.service';
 import { ProductType } from 'src/types/Product.type';
 import { Ref } from 'vue';
 import DialogProduct from 'src/components/products/DialogProduct.vue';
+import PageTitle from 'src/components/PageTitle.vue';
 
 export default defineComponent({
   name: 'ListPage',
   components: {
     ProductCard,
     DialogProduct,
+    PageTitle,
   },
   setup() {
     const search = ref('');

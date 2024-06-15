@@ -2,7 +2,7 @@
   <q-page padding>
     <q-card flat>
       <q-card-section>
-        <PageTitle :title="'Novo Produto'" />
+        <PageTitle :title="'Editar Produto'" />
       </q-card-section>
       <q-card-section>
         <ProductForm />
@@ -16,7 +16,7 @@ import PageTitle from 'src/components/PageTitle.vue';
 import ProductForm from 'src/components/products/ProductForm.vue';
 
 export default {
-  name: 'NewPage',
+  name: 'EditPage',
   components: {
     ProductForm,
     PageTitle,

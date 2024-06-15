@@ -2,7 +2,7 @@
   <q-page padding>
     <q-card flat class="column items-center">
       <q-card-section class="q-pb-none">
-        <span class="text-h5 text-neutral-black">Lista de Clientes</span>
+        <PageTitle :title="'Lista de clientes'" />
       </q-card-section>
       <q-card-section>
         <q-btn
@@ -50,11 +50,13 @@ import { Ref } from 'vue';
 import useClientService from 'src/services/client.service';
 import { ClientType } from 'src/types/Client.type';
 import ClientCard from 'src/components/clients/ClientCard.vue';
+import PageTitle from 'src/components/PageTitle.vue';
 
 export default defineComponent({
   name: 'ClientListPage',
   components: {
     ClientCard,
+    PageTitle,
   },
   setup() {
     const search = ref('');

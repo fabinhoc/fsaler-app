@@ -1,14 +1,28 @@
 <template>
   <q-form ref="productForm" @submit.prevent="handleSubmit">
     <q-btn
-      icon="qr_code_scanner"
+      outline
       color="primary"
-      class="q-mb-sm"
+      class="q-mb-sm full-width q-mb-lg"
       :class="$q.platform.is.mobile ? 'full-width' : ''"
       @click="dialog = true"
     >
-      Ler código de barras
+      <div class="colum">
+        <q-icon name="las la-barcode"></q-icon>
+        <p>Ler código de barras</p>
+      </div>
     </q-btn>
+
+    <span class="text-body-4 text-neutral-l_grey">
+      # Informações do produto
+    </span>
+    <q-separator
+      :spaced="false"
+      inset
+      class="q-mb-md q-mx-none q-pt-none"
+      size="1"
+    />
+
     <div class="row column q-col-gutter-md">
       <q-input
         v-model="v$.name.$model"
@@ -132,21 +146,19 @@
         :label="$t('app.product.component.productForm.quantity')"
       />
     </div>
-    <q-btn
-      type="submit"
-      color="positive"
-      :disable="v$.$invalid"
-      class="full-width q-ma-sm"
-      >{{ $t('app.product.component.productForm.save') }}</q-btn
-    >
-    <q-btn
-      @click="cancel"
-      class="full-width"
-      type="button"
-      color="negative"
-      outline
-      >{{ $t('app.product.component.productForm.cancel') }}</q-btn
-    >
+    <div class="column q-mt-xl q-gutter-sm">
+      <q-btn
+        type="submit"
+        color="positive"
+        outline
+        :disable="v$.$invalid"
+        no-caps
+        >{{ $t('app.product.component.productForm.save') }}</q-btn
+      >
+      <q-btn @click="cancel" type="button" color="negative" outline no-caps>{{
+        $t('app.product.component.productForm.cancel')
+      }}</q-btn>
+    </div>
   </q-form>
   <QRCodeDialog v-model="dialog" :init="dialog" @setCode="setCode" />
 </template>
@@ -170,6 +182,12 @@ export default defineComponent({
   name: 'ProductForm',
   components: {
     QRCodeDialog,
+  },
+  props: {
+    productId: {
+      required: false,
+      type: Number,
+    },
   },
   setup() {
     const categories: Ref<CategoryType[] | null> = ref(null);

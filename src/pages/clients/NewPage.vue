@@ -2,7 +2,7 @@
   <q-page padding>
     <q-card flat>
       <q-card-section>
-        <span class="text-h4 text-neutral-black">Criar/editar Cliente</span>
+        <PageTitle :title="'Criar/Editar cliente'" />
       </q-card-section>
       <q-card-section>
         <ClientForm />
@@ -12,6 +12,7 @@
 </template>
 
 <script lang="ts">
+import PageTitle from 'src/components/PageTitle.vue';
 import ClientForm from 'src/components/clients/ClientForm.vue';
 import { defineComponent } from 'vue';
 
@@ -19,6 +20,7 @@ export default defineComponent({
   name: 'ClientNewPage',
   components: {
     ClientForm,
+    PageTitle,
   },
   setup() {
     return {};
