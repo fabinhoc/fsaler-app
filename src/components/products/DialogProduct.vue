@@ -64,7 +64,14 @@
           no-caps
           icon="las la-pencil-alt"
         ></q-btn>
-        <q-btn color="negative" icon="lar la-trash-alt" outline no-caps></q-btn>
+        <q-btn
+          @click="$emit('product:remove', product.uuid)"
+          color="negative"
+          icon="lar la-trash-alt"
+          outline
+          no-caps
+          v-close-popup
+        ></q-btn>
       </q-card-section>
     </q-card>
   </q-dialog>
